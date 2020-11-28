@@ -1,6 +1,27 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createBookAction } from '../../redux/actions/books/bookActions';
 
 const AddBook = () => {
+  const [category, setCategory] = useState('');
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+
+  //dispatch
+  const dispatch = useDispatch();
+
+  //Handle form submit
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+
+    const data = {
+      title,
+      author,
+      category,
+    };
+    dispatch(createBookAction(data));
+  };
   return (
     <div className='row container-height'>
       <div className='col-lg-6 col-md-6 m-auto'>
@@ -35,10 +56,13 @@ const AddBook = () => {
                 </div>
                 <div className='modal-body'>
                   <h1 className='text-center'>Add Book</h1>
-                  <form>
+                  <form onSubmit={handleFormSubmit}>
                     <fieldset>
                       <div className='form-group'>
-                        <select className='custom-select'>
+                        <select
+                          value={category}
+                          onChange={e => setCategory(e.target.value)}
+                          className='custom-select'>
                           <option defaultValue='programming'>
                             programming
                           </option>
@@ -50,6 +74,8 @@ const AddBook = () => {
                       <div className='form-group'>
                         <label htmlFor='exampleInputEmail1'>Author </label>
                         <input
+                          value={author}
+                          onChange={e => setAuthor(e.target.value)}
                           type='text'
                           className='form-control'
                           id='exampleInputEmail1'
@@ -60,6 +86,8 @@ const AddBook = () => {
                       <div className='form-group'>
                         <label htmlFor='exampleInputPassword1'>title</label>
                         <input
+                          value={title}
+                          onChange={e => setTitle(e.target.value)}
                           type='text'
                           className='form-control'
                           id='exampleInputPassword1'
