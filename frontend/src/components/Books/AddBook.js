@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AddBook = () => {
-  //Get the user id from store
-
   return (
     <div className='row container-height'>
       <div className='col-lg-6 col-md-6 m-auto'>
