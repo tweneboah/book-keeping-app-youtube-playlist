@@ -4,6 +4,7 @@ import {
   CREATE_BOOK_REQUEST,
   CREATE_BOOK_SUCCESS,
   FETCH_BOOK_FAIL,
+  FETCH_BOOK_REQUEST,
   FETCH_BOOK_SUCCESS,
   FETCH_USERS_REQUEST,
 } from '../actionTypes';
@@ -39,7 +40,7 @@ const fetchBooksAction = () => {
   return async dispatch => {
     try {
       dispatch({
-        type: FETCH_USERS_REQUEST,
+        type: FETCH_BOOK_REQUEST,
       });
 
       const config = {
@@ -62,4 +63,4 @@ const fetchBooksAction = () => {
   };
 };
 
-export { createBookAction };
+export { createBookAction, fetchBooksAction };
