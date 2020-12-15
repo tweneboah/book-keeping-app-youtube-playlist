@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {
-  USER_LOGIN_SUCCESS,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
 } from '../actionTypes';
 
 const registerUserAction = (name, email, password) => {

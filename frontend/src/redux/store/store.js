@@ -13,8 +13,19 @@ const reducer = combineReducers({
   userLogin: userReducer,
 });
 
+//Get user from localstorage and save it into our store
+
+const userAuthFromStorage = localStorage.getItem('userAuthData')
+  ? JSON.parse(localStorage.getItem('userAuthData'))
+  : null;
+
+const initialState = {
+  userLogin: { userInfo: userAuthFromStorage },
+};
+
 const store = createStore(
   reducer,
+  initialState,
   composeWithDevTools(applyMiddleware(...middlewares))
 );
 
