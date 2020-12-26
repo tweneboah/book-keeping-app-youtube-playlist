@@ -16,7 +16,7 @@ app.use(express.json());
 app.use('/api/users', usersRoute);
 //Books
 app.use('/api/books', bookRouter);
-console.log(process.env.MY_NAME);
+
 //Error middleware
 app.use(error.errorMiddlewareHandler);
 

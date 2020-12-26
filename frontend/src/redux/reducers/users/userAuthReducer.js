@@ -1,7 +1,10 @@
 import {
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
+  USER_LOGIN_FAIL,
 } from '../../actions/actionTypes';
 
 const userReducer = (state = {}, action) => {
@@ -19,6 +22,19 @@ const userReducer = (state = {}, action) => {
       return {
         error: action.payload,
         loading: false,
+      };
+    //Login
+    case USER_LOGIN_REQUEST:
+      return {
+        loading: true,
+      };
+    case USER_LOGIN_SUCCESS:
+      return {
+        userInfo: action.payload,
+      };
+    case USER_LOGIN_FAIL:
+      return {
+        error: action.payload,
       };
     default:
       return state;
