@@ -5,6 +5,7 @@ import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
   USER_LOGIN_FAIL,
+  USER_LOGOUT_SUCCESS,
 } from '../../actions/actionTypes';
 
 const userReducer = (state = {}, action) => {
@@ -36,6 +37,9 @@ const userReducer = (state = {}, action) => {
       return {
         error: action.payload,
       };
+
+    case USER_LOGOUT_SUCCESS:
+      return {};
     default:
       return state;
   }

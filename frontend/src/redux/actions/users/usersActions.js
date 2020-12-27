@@ -6,6 +6,7 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
+  USER_LOGOUT_SUCCESS,
 } from '../actionTypes';
 
 const registerUserAction = (name, email, password) => {
@@ -83,4 +84,16 @@ const loginUserAction = (email, password) => {
     }
   };
 };
-export { registerUserAction, loginUserAction };
+
+//Logout action
+const logoutUserAction = () => async dispatch => {
+  try {
+    //Remove user from storage
+    localStorage.removeItem('userAuthData');
+    dispatch({
+      type: USER_LOGOUT_SUCCESS,
+    });
+  } catch (error) {}
+};
+
+export { registerUserAction, loginUserAction, logoutUserAction };

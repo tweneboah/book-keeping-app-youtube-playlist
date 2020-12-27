@@ -1,9 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUserAction } from '../../redux/actions/users/usersActions';
 
-const Navbar = () => {
+const Navbar = props => {
   const state = useSelector(state => state.userLogin);
+
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logoutUserAction());
+    history.push('/');
+  };
 
   const { userInfo, loading, error } = state;
   return (
@@ -57,14 +67,17 @@ const Navbar = () => {
                 </li>
 
                 <li className='nav-item'>
-                  <a className='nav-link' to='/users'>
+                  <Link className='nav-link' to='/users'>
                     Users
-                  </a>
+                  </Link>
                 </li>
                 <li className='nav-item'>
-                  <a className='nav-link' to='/login'>
+                  <Link
+                    onClick={logoutHandler}
+                    className='nav-link'
+                    to='/login'>
                     Logout
-                  </a>
+                  </Link>
                 </li>
               </>
             )}

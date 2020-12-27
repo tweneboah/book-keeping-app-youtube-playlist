@@ -6,6 +6,7 @@ import Books from './components/Books/Books';
 import Navbar from './components/Navbar/Navbar';
 import RegisterUser from './components/users/RegisterUser';
 import LoginUser from './components/users/LoginUser';
+import Home from './components/Home/Home';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Switch>
+          <Route exact path='/' component={Home} />
           <Route exact path='/login' component={LoginUser} />
           <Route exact path='/books' component={Books} />
           <Route exact path='/addbook' component={AddBook} />
